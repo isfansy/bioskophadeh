@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Table,Button,Modal,ModalBody,ModalFooter, ModalHeader } from 'reactstrap';
 import Axios from 'axios';
 import {url} from './url'
+import {Redirect} from 'react-router-dom'
+import {connect} from 'react-redux'
 
 
 class Dashboaradmin extends Component {
@@ -198,6 +200,9 @@ class Dashboaradmin extends Component {
     render() { 
         const {datafilm,indexedit}=this.state
         const {length}=datafilm
+        if(this.props.Auth.id!=='admin'){
+            return <Redirect to='/notfound'/>
+        }
         if(length===0){
             return <div>loading</div>
         }
@@ -290,5 +295,11 @@ class Dashboaradmin extends Component {
          );
     }
 }
+
+const MapstateToprops=(state)=>{
+    return {
+    Auth:state.Auth
+    }
+}
  
-export default Dashboaradmin;
+export default connect(MapstateToprops) (Dashboaradmin);

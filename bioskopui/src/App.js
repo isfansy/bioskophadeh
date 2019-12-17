@@ -17,6 +17,7 @@ import History from './pages/history'
 import Managestudio from './pages/managestudio';
 import {TambahCart} from './redux/action/ActionCart'
 import Header from './components/header'
+import Setting from './pages/setting'
 
 class App extends Component {
 
@@ -62,7 +63,9 @@ class App extends Component {
         <Route path='/cart' exact component={Cart}></Route>
         <Route path='/history' exact component={History}></Route>
         <Route path='/managestudio' exact component={Managestudio}></Route>
-        
+        <Route path='/setting' exact component={Setting}></Route>
+        <Route path='/notfound' exact component={Pagenotfound}></Route>
+
         <Route path='/*' exact component={Pagenotfound}></Route>
       </Switch>
     </div>

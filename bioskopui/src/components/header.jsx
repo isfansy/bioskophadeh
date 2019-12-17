@@ -12,7 +12,7 @@ import {
   DropdownMenu,
   DropdownItem
 } from 'reactstrap';
-import {Link,} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {FaCartArrowDown} from 'react-icons/fa'
 
@@ -25,7 +25,7 @@ const Header = (props) => {
   return (
     <div>
       <Navbar color="light" light expand="md">
-        <NavbarBrand className='halu' href="/">BioskopAmbyar</NavbarBrand>
+        <NavbarBrand href="/">BioskopAmbyar</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto"  navbar>
@@ -71,7 +71,7 @@ const Header = (props) => {
                 {props.namauser}
               </DropdownToggle>
               <DropdownMenu right>
-                <DropdownItem>
+                <DropdownItem href='/setting'>
                   Setting
                 </DropdownItem>
                 <DropdownItem href='/' onClick={()=>onSignOutClick()}>

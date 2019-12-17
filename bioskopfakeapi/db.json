@@ -9,7 +9,7 @@
     {
       "id": 2,
       "username": "dobleh",
-      "password": "qwe",
+      "password": "asd",
       "role": "user"
     },
     {
@@ -80,21 +80,22 @@
   ],
   "movies": [
     {
-      "id": 1,
       "title": "Jumanji: The Next Level",
-      "sutradara": "Jake Kashdan",
-      "durasi": 121,
-      "jadwal": [
-        9,
-        12,
-        16
-      ],
-      "synopsys": "Dwayne Johnson, Karen Gillan, Jack Black dan Kevin Hart kembali ke Jumanji,keempatnya harus menyelamatkan salah satu teman mereka. Namun permainan telah berubah.Para pemain kini harus lebih berani melintasi rintangan ekstrem dan kembali dengan selamat dari permainan paling berbahaya di dunia.",
       "image": "https://media.21cineplex.com/webcontent/gallery/pictures/157380448937451_287x421.jpg",
+      "synopsys": "Dwayne Johnson, Karen Gillan, Jack Black dan Kevin Hart kembali ke Jumanji,keempatnya harus menyelamatkan salah satu teman mereka. Namun permainan telah berubah.Para pemain kini harus lebih berani melintasi rintangan ekstrem dan kembali dengan selamat dari permainan paling berbahaya di dunia.",
+      "sutradara": "Jake Kashdan",
       "genre": "Action",
-      "studioId": "2",
+      "durasi": "121",
+      "produksi": "RANS ENTERTAINMENT",
+      "jadwal": [
+        12,
+        16,
+        18,
+        20
+      ],
       "trailer": "https://www.youtube.com/embed/rBxcF-r9Ibs",
-      "produksi": "Columbia Pictures"
+      "studioId": "3",
+      "id": 1
     },
     {
       "id": 3,
@@ -137,14 +138,14 @@
       "userId": 2,
       "movieId": 3,
       "jadwal": 12,
-      "totalHarga": 50000,
+      "totalharga": 50000,
       "bayar": false
     },
     {
       "userId": 3,
       "movieId": 3,
       "jadwal": 12,
-      "totalHarga": 50000,
+      "totalharga": 50000,
       "id": 2,
       "bayar": false
     },
@@ -152,7 +153,7 @@
       "userId": 2,
       "movieId": 3,
       "jadwal": 14,
-      "totalHarga": 5000,
+      "totalharga": 5000,
       "id": 3,
       "bayar": false
     },
@@ -427,6 +428,14 @@
       "jadwal": 12,
       "bayar": false,
       "id": 37
+    },
+    {
+      "userId": 2,
+      "movieId": 3,
+      "totalharga": 25000,
+      "jadwal": 12,
+      "bayar": false,
+      "id": 38
     }
   ],
   "ordersDetails": [
@@ -801,6 +810,12 @@
       "seat": 17,
       "row": 2,
       "id": 62
+    },
+    {
+      "orderId": 38,
+      "seat": 12,
+      "row": 5,
+      "id": 63
     }
   ],
   "transaction": [

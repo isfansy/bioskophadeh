@@ -209,9 +209,12 @@ class Belitiket extends Component {
             if(this.state.redirecthome){
                 return <Redirect to={'/'}/>
             }
+            if(this.props.RoleAuth==='admin'){
+                return <Redirect to={'/notfound'}/>
+            }
             return (
                 <div>
-                    <Header/>
+
                     <Modal isOpen={this.state.openmodalcart}>
                         <ModalBody>
                             cart berhasil ditambah bro
@@ -261,6 +264,7 @@ const MapstateToprops=(state)=>{
     return{
         AuthLog:state.Auth.login,
         UserId:state.Auth.id,
+        RoleAuth:state.Auth.role,
         studioId:state.Auth.studioId
     }
 }

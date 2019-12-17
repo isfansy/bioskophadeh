@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import './notfound.sass'
+import Header from '../components/header'
 
 class Pagenotfound extends Component {
     state = {  }
     render() { 
         return ( 
-            <div>
+            <div>  
                 <div>
                         <div className="background">
                             <div className="ground" />

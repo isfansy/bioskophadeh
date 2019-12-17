@@ -3,12 +3,12 @@ import Axios from 'axios'
 import {connect} from 'react-redux'
 import {Table,ModalHeader,ModalBody,ModalFooter,Modal} from 'reactstrap'
 import {url} from '../components/url'
-import Header from '../components/header';
 import {Button} from 'reactstrap'
+import Numeral from 'numeral'
 
 class Cart extends Component {
     state = {
-        datacart:null,
+        datacart:[],
         modaldetail:false,
         indexdetail:0
         
@@ -46,6 +46,18 @@ class Cart extends Component {
             console.log(err)
         })
     }
+    
+    totalharga=()=>{
+        var total=0
+        this.state.datacart.map((val)=>{
+            return total+=val.totalharga
+        })
+        total='Rp.'+Numeral(total).format('0,0')+',00'
+        return total
+    }
+
+
+
     renderCart=()=>{
         if(this.state.datacart!==null){
             if(this.state.datacart.length===0){
@@ -60,9 +72,10 @@ class Cart extends Component {
                         <td style={{width:300}}>{val.movie.title}</td>
                         <td style={{width:100}}>{val.jadwal}</td>
                         <td style={{width:100}}>{val.qty.length}</td>
+                        <td style={{width:100}}>{'Rp. '+Numeral(val.totalharga).format('0,0')+',00'}</td>
                         <td style={{width:100}}><Button onClick={()=>this.setState({modaldetail:true,indexdetail:index})} variant='info'>Details</Button></td>
                     </tr>
-                )
+                )  
             })
         }
     }
@@ -109,6 +122,7 @@ class Cart extends Component {
                                     <th style={{width:300}}>Title</th>
                                     <th style={{width:100}}>Jadwal</th>
                                     <th style={{width:100}}>Jumlah</th>
+                                    <th style={{width:100}}>Total Harga</th>
                                     <th style={{width:100}}>Detail</th>
                                 </tr>
                             </thead>
@@ -116,9 +130,16 @@ class Cart extends Component {
                                 {this.renderCart()}
                             </tbody>
                             <tfoot>
-                                <Button variant='danger'>Checkout</Button>
+                                <tr>
+                                <td>Total Keseluruhan</td>
+                                <td></td>
+                                <td></td>
+                                <td>{this.totalharga()}</td>
+                                <td></td>
+                                </tr>
                             </tfoot>
                         </Table>
+                        <Button variant='danger'>Checkout</Button>
                     </center>
                 </div>
               );

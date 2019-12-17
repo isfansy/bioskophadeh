@@ -4,3 +4,10 @@ export const LoginSuccessAction=(datauser)=>{
         payload:datauser
     }
 }
+
+export const gantiPassword =(newpass)=>{
+    return {
+      type:'GANTI_PASSWORD',
+      payload:newpass
+    }
+  }

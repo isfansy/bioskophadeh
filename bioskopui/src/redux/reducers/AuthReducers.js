@@ -18,6 +18,8 @@ export default (state=INITIAL_STATE,action)=>{
             return{...state,error:action.payload,loading:false}
         case 'Tambah_Cart':
             return{...state,cart:action.payload}
+        case "GANTI_PASS":
+            return { ...state, ...action.payload };
         default:
             return state
     }
