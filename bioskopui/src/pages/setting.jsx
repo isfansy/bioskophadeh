@@ -13,8 +13,8 @@ class Setting extends Component {
   };
 
   onClickgantipass = () => {
-    var passwordbaru = this.refs.passwordbaru.value;
-    var passwordlama = this.refs.passwordlama.value;
+    var passNew = this.refs.passNew.value;
+    var passOld = this.refs.passOld.value;
     var password = this.refs.confirmpass.value;
 
     var updatepassword = {
@@ -23,25 +23,25 @@ class Setting extends Component {
       role: this.props.role
     };
 
-    if (passwordlama === "" || passwordbaru === "" || password === "") {
+    if (passOld === "" || passNew === "" || password === "") {
       Swal.fire({
         icon: "error",
         title: "Gagal",
         text: "Password tidak boleh kosong"
       });
-    } else if (passwordlama == passwordbaru) {
+    } else if (passOld == passNew) {
       Swal.fire({
         icon: "error",
         title: "Gagal",
         text: "Password baru tidak boleh sama dengan password lama"
       });
-    } else if (passwordlama !== this.props.passuser) {
+    } else if (passOld !== this.props.passuser) {
       Swal.fire({
         icon: "error",
         title: "Gagal",
         text: "Password lama salah"
       });
-    } else if (passwordbaru !== password) {
+    } else if (passNew !== password) {
       Swal.fire({
         icon: "error",
         title: "Gagal",
@@ -51,7 +51,7 @@ class Setting extends Component {
       Axios.patch(`${url}users/${this.props.userId}`, updatepassword)
         .then(res => {
           Swal.fire({
-            title: "Yakin ganti password?",
+            title: "ARE YOU SURE ?",
             icon: "question",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
@@ -64,7 +64,7 @@ class Setting extends Component {
               this.setState({ backtohome: true });
               Swal.fire({
                 icon: "success",
-                title: "Password berhasil diganti",
+                title: "YOU HAVE CHANGED THE PASSWORD !",
                 showConfirmButton: false,
                 timer: 1500
               });
@@ -86,14 +86,14 @@ class Setting extends Component {
       <div style={{height: "90vh" }}>
           <center>
         <div className="row " style={{ width: "20%" }}>
-          <h1>Ganti Password</h1>
+          <h1>Change Password</h1>
           <div>
-            <label>Password Lama</label>
-            <input className="form-control" type="password" placeholder="Password" ref="passwordlama" />
+            <label>Old Password</label>
+            <input className="form-control" type="password" placeholder="Password" ref="passOld" />
           </div>
           <div>
-            <label>Password Baru</label>
-            <input className="form-control" type="password" placeholder="Password" ref="passwordbaru" />
+            <label>New Password</label>
+            <input className="form-control" type="password" placeholder="Password" ref="passNew" />
           </div>
           <div>
             <label>Re-enter Password</label>

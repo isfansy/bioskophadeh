@@ -67,7 +67,7 @@ class Belitiket extends Component {
 
     onPilihSeatClick=(row,seat)=>{
         var pilihan=this.state.pilihan
-        pilihan.push({row:row,seat})//seat:seat bisa juga ditulis begitu 
+        pilihan.push({row:row,seat})
         this.setState({pilihan:pilihan})
     }
     
@@ -262,7 +262,7 @@ class Belitiket extends Component {
         }
         return(
             <div>
-                404 not found
+                <Redirect to='/notfound' />
             </div>
         )
     }

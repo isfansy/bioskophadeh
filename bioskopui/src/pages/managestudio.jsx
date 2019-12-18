@@ -11,7 +11,9 @@ class Managestudio extends Component {
         datastudio:[],
         modaladd:false,
         indexedit:0,
-        modaledit:false
+        modaledit:false,
+        modaldelete:false,
+        indexdelete:0
      }
 
     componentDidMount(){
@@ -30,8 +32,8 @@ class Managestudio extends Component {
                     <td style={{width:100}}>{index+1}</td>
                     <td style={{width:500}}>{val.nama}</td>
                     <td style={{width:300}}>{val.jumlahKursi}</td>
-                    <td style={{width:100}}><Button onClick={()=>this.setState({modaledit:true,indexedit:index})} variant='info'>Edit</Button></td>
-                
+                    <td style={{width:100}}><Button onClick={()=>this.setState({modaledit:true,indexedit:index})} className="btn btn-dark mt-1 mb-1">Edit</Button></td>
+                    <td style={{width:100}}><Button onClick={()=>this.setState({modaldelete:true,indexdelete:index})} className="btn btn-dark mt-1 mb-1">Delete</Button></td>
                  </tr>
 
             )
@@ -83,6 +85,23 @@ class Managestudio extends Component {
         })
     }
 
+    // deleteDataClick=()=>{
+    //     var id=this.state.datastudio[this.state.indexdelete].id
+    //     Axios.delete(`${url}studios/${id}`)
+    //     .then((res)=>{
+    //         Axios.get(`${url}studios`)
+    //         .then((res1)=>{
+    //             this.setState({datastudio:res.data,modaldelete:false})
+    //         })
+    //         .catch((err)=>{
+    //             console.log(err)
+    //         })
+    //     })
+    //     .catch((err)=>{
+    //         console.log(err)
+    //     })
+    // }
+
 
     render() { 
         const {datastudio,indexedit}=this.state
@@ -127,15 +146,30 @@ class Managestudio extends Component {
                 <Button variant="danger" onClick={()=>this.setState({modaledit:false})}>Cancel</Button>
             </ModalFooter>
             </Modal>
+             
+                {/* <Modal isOpen={this.state.modaldelete} toggle={() => this.setState({ modaldelete: false })}>
+                    <ModalHeader>
+                        Delete Data
+                        </ModalHeader>
+                    <ModalBody>
+                        <h3 style={{ color: 'black', alignContent: 'center' }}>Are you sure you want to delete this?</h3>
+                    </ModalBody>
+                    <ModalFooter>
+                        <button variant='succes' onClick={this.deleteDataClick}>DELETE DATA</button>
+                        <button variant='danger' onClick={()=>this.setState({ modaldelete: false })}>CANCEL</button>
+                    </ModalFooter>
+                </Modal> */}
 
-
-            <div className='container'>
-            <div style={{textAlign:'center', marginTop:'20px',paddingBottom:'15px'}}>
+            
+            <div className='ml-5'>
+            <div style={{textAlign:'center',marginTop:'2px',paddingBottom:'15px'}}>
             <h3 style={{paddingBottom:'10px'}}>Manage Studio</h3>
-            <Button onClick={()=>this.setState({modaladd:true})} variant='secondary'>Tambah Data</Button>
+            <Button onClick={()=>this.setState({modaladd:true})} className="btn btn-dark mt-1 mb-1">Tambah Data</Button>
             </div>
+            </div>
+            <div>
             <center style={{marginBottom:'50px'}}>
-            <Table style={{width:900
+            <Table bordered style={{width:900
             }} >
                 <thead>
                     <tr>
@@ -143,6 +177,7 @@ class Managestudio extends Component {
                         <th style={{width:500}}>Studio</th>
                         <th style={{width:300}}>Seat</th>
                         <th style={{width:100}}>Edit</th>
+                        <th style={{width:100}}>Delete</th>
                     </tr>
                 </thead>
                 <tbody>

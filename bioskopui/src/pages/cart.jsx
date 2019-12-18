@@ -5,6 +5,7 @@ import {Table,ModalHeader,ModalBody,ModalFooter,Modal} from 'reactstrap'
 import {url} from '../components/url'
 import {Button} from 'reactstrap'
 import Numeral from 'numeral'
+import {Redirect} from 'react-router-dom'
 
 class Cart extends Component {
     state = {
@@ -80,6 +81,9 @@ class Cart extends Component {
         }
     }
     render() {
+        if(this.props.roleUser==='admin'){
+            return <Redirect to='/notfound'/>
+        }
         if(this.props.UserId){
             return (
                 <div>
@@ -139,13 +143,15 @@ class Cart extends Component {
                                 </tr>
                             </tfoot>
                         </Table>
-                        <Button variant='danger'>Checkout</Button>
+                        <a href='/history' ><Button variant='danger'>Checkout</Button></a>
                     </center>
                 </div>
               );
         }
         return(
-            <div>Loading</div>
+            <div>
+                <Redirect to='/notfound' />
+            </div>
         )
     }
 }
@@ -153,7 +159,8 @@ class Cart extends Component {
 const MapstateToprops=(state)=>{
     return{
         AuthLog:state.Auth.login,
-        UserId:state.Auth.id
+        UserId:state.Auth.id,
+        roleUser:state.Auth.role
     }
 }
 export default connect(MapstateToprops) (Cart);
