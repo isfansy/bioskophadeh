@@ -113,6 +113,10 @@ class Belitiket extends Component {
             console.log(err)
         })
     }
+
+    cleanandclearbutton=()=>{
+        this.setState({pilihan:[]})
+    }
     
     
     renderHargadanQuantity=()=>{
@@ -232,7 +236,11 @@ class Belitiket extends Component {
                         </div>
                         {this.state.loading?null:this.renderbutton()}
                         <div>
-                            {this.state.pilihan.length?<button onClick={this.onOrderClick} className='btn btn-primary mt-3'>Order</button> 
+                            {this.state.pilihan.length?<button onClick={this.onOrderClick} className='btn btn-primary mt-3'>Order</button>
+                            :
+                            null
+                            }
+                            {this.state.pilihan.length?<button onClick={this.cleanandclearbutton} className='btn btn-primary mt-3'>Clear</button>
                             :
                             null
                             }

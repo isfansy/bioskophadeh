@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
 import './notfound.sass'
-import Header from '../components/header'
+import Headernotfound from '../components/headernotfound';
 
 class Pagenotfound extends Component {
     state = {  }
     render() { 
         return ( 
             <div>  
+                
                 <div>
                         <div className="background">
                             <div className="ground" />
+                            <Headernotfound/>
                         </div>
                         <div className="container">
+
                             <div className="left-section">
                             <div className="inner-content">
                                 <h1 className="heading">404</h1>

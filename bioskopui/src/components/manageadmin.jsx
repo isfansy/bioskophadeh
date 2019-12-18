@@ -14,16 +14,22 @@ class Dashboaradmin extends Component {
         modaledit:false,
         indexedit:0,
         jadwal:[12,14,16,18,20,22]
-     }
+     } 
+     
+    
      componentDidMount(){
-         Axios.get(`${url}movies`)
-         .then((res)=>{
-             this.setState({datafilm:res.data})
-         }).catch((err)=>{
-             console.log(err)
-         })
-     }
+        Axios.get(`${url}movies`)
+        .then((res)=>{
+            Axios.get(`${url}studios`)
+            .then((res1)=>{
 
+                this.setState({datafilm:res.data, datastudio:res1.data})
+            })
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+    }
 
 
 
@@ -200,12 +206,17 @@ class Dashboaradmin extends Component {
     render() { 
         const {datafilm,indexedit}=this.state
         const {length}=datafilm
-        if(this.props.Auth.id!=='admin'){
+        
+        if(this.props.roleUser==='user'){
             return <Redirect to='/notfound'/>
         }
         if(length===0){
             return <div>loading</div>
         }
+
+        if(this.props.UserId){
+            
+        
         return ( 
             <div>
             
@@ -224,9 +235,13 @@ class Dashboaradmin extends Component {
                         </div>
                         <input type="text" defaultValue={datafilm[indexedit].trailer} ref='edittrailer' placeholder='trailer'className='form-control mt-2' />
                         <select ref='editstudio' className='form-control mt-2'>
-                            <option value="1">Studio 1</option>    
-                            <option value="2">Studio 2</option>    
-                            <option value="3">Studio 3</option>    
+                                    {
+                                this.state.datastudio.map((val)=>{
+                                    return(
+                                        <option value={val.id}>{val.nama}</option>
+                                    )
+                                })
+                            }   
                         </select> 
                         <input type="text" defaultValue={datafilm[indexedit].sutradara}  ref='editsutradara' placeholder='sutradara' className='form-control mt-2'/>
                         <input type="number" defaultValue={datafilm[indexedit].durasi}  ref='editdurasi' placeholder='durasi' className='form-control mt-2'/>
@@ -256,9 +271,13 @@ class Dashboaradmin extends Component {
                         </div>
                         <input type="text" ref='trailer' placeholder='trailer'className='form-control mt-2' />
                         <select ref='studio' className='form-control mt-2'>
-                            <option value="1">Studio 1</option>    
-                            <option value="2">Studio 2</option>    
-                            <option value="3">Studio 3</option>    
+                        {
+                             this.state.datastudio.map((val)=>{
+                                return(
+                              <option value={val.id}>{val.nama}</option>
+                              )
+                                })
+                           }    
                         </select> 
                         <input type="text"  ref='sutradara' placeholder='sutradara' className='form-control mt-2'/>
                         <input type="number"  ref='durasi' placeholder='durasi' className='form-control mt-2'/>
@@ -293,13 +312,18 @@ class Dashboaradmin extends Component {
                 </Table>
             </div>
          );
+        }
+        return <Redirect to='/notfound'/>
     }
 }
 
 const MapstateToprops=(state)=>{
     return {
-    Auth:state.Auth
+    Auth:state.Auth,
+    roleUser:state.Auth.role,
+    UserId:state.Auth.id
     }
 }
  
-export default connect(MapstateToprops) (Dashboaradmin);
+export default connect(MapstateToprops)(Dashboaradmin);
+

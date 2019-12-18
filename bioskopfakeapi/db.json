@@ -9,7 +9,7 @@
     {
       "id": 2,
       "username": "dobleh",
-      "password": "asd",
+      "password": "qwe",
       "role": "user"
     },
     {
@@ -19,8 +19,8 @@
       "role": "user"
     },
     {
-      "registrasiusername": "fakhran",
-      "registrasipassword": "1234",
+      "registrasiusername": "isfan",
+      "registrasipassword": "uhuy",
       "role": "user",
       "id": 4
     },
@@ -59,23 +59,39 @@
       "password": "123",
       "role": "user",
       "id": 10
+    },
+    {
+      "username": "isfan",
+      "password": "123",
+      "role": "user",
+      "id": 11
     }
   ],
   "studios": [
     {
-      "id": 1,
       "nama": "studio 1",
-      "jumlahKursi": 260
+      "jumlahKursi": "240",
+      "id": 1
     },
     {
-      "id": 2,
       "nama": "studio 2",
-      "jumlahKursi": 240
+      "jumlahKursi": "240",
+      "id": 2
     },
     {
-      "id": 3,
       "nama": "studio 3",
-      "jumlahKursi": 200
+      "jumlahKursi": "200",
+      "id": 3
+    },
+    {
+      "nama": "Halu",
+      "jumlahKursi": "240",
+      "id": 4
+    },
+    {
+      "nama": "hahai",
+      "jumlahKursi": "260",
+      "id": 5
     }
   ],
   "movies": [
@@ -147,14 +163,6 @@
       "jadwal": 12,
       "totalharga": 50000,
       "id": 2,
-      "bayar": false
-    },
-    {
-      "userId": 2,
-      "movieId": 3,
-      "jadwal": 14,
-      "totalharga": 5000,
-      "id": 3,
       "bayar": false
     },
     {
@@ -436,6 +444,14 @@
       "jadwal": 12,
       "bayar": false,
       "id": 38
+    },
+    {
+      "userId": 11,
+      "movieId": 1,
+      "totalharga": 25000,
+      "jadwal": 12,
+      "bayar": false,
+      "id": 39
     }
   ],
   "ordersDetails": [
@@ -816,6 +832,12 @@
       "seat": 12,
       "row": 5,
       "id": 63
+    },
+    {
+      "orderId": 39,
+      "seat": 17,
+      "row": 5,
+      "id": 64
     }
   ],
   "transaction": [

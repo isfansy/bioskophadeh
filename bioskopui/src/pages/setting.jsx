@@ -98,10 +98,7 @@ class Setting extends Component {
           <div>
             <label>Re-enter Password</label>
             <input className="form-control" type="password" placeholder="Re-enter" ref="confirmpass" />
-            <button onClick={this.onClickgantipass} className="btn btn-light mt-4 mb-4" type="submit">
-
-            Submit
-          </button>
+            <button onClick={this.onClickgantipass} className="btn btn-dark mt-4 mb-3" type="submit">Submit</button>
           </div>
           
         </div>
